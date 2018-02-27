@@ -9,6 +9,10 @@ use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['expect' => ['show']]);
+    }
     //个人页面展示
     public function show(User $user)
     {
@@ -18,12 +22,15 @@ class UsersController extends Controller
     //个人资料编辑
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
     //个人资料保存
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
+        $this->authorize('update', $user);
+
         $data = $request->all();
 
         if ($request->avatar) {
