@@ -28,14 +28,14 @@
                                     <td class="text-center"><strong>{{$topic->id}}</strong></td>
 
                                     <td>{{$topic->title}}</td> <td>{{$topic->body}}</td> <td>{{$topic->user_id}}</td> <td>{{$topic->category_id}}</td> <td>{{$topic->reply_count}}</td> <td>{{$topic->view_count}}</td> <td>{{$topic->last_reply_user_id}}</td> <td>{{$topic->order}}</td> <td>{{$topic->excerpt}}</td> <td>{{$topic->slug}}</td>
-                                    
+
                                     <td class="text-right">
                                         <a class="btn btn-xs btn-primary" href="{{ route('topics.show', $topic->id) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i> 
+                                            <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
-                                        
+
                                         <a class="btn btn-xs btn-warning" href="{{ route('topics.edit', $topic->id) }}">
-                                            <i class="glyphicon glyphicon-edit"></i> 
+                                            <i class="glyphicon glyphicon-edit"></i>
                                         </a>
 
                                         <form action="{{ route('topics.destroy', $topic->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
